@@ -1,6 +1,6 @@
 node {
   def server = Artifactory.server 'antoniorufo.jfrog.io'
-  def myGradleContainer = docker.image('gradle:jdk8-alpine')
+  def myGradleContainer = docker.image('ringcentral/gradle:6.5.1')
   myGradleContainer.pull()
   stage('prep') {
     checkout scm
@@ -20,7 +20,7 @@ node {
       "files": [
         {
           "pattern": "complete/build/libs/gs-gradle-*.jar",
-          "target": "test-gradle-dev-local/academy/newtech/gs-gradle/1.0/gs-gradle-1.0-docker.jar"
+          "target": "gs-gradle-dev-local/academy/newtech/gs-gradle/1.0/gs-gradle-1.0-docker.jar"
         }
      ]
     }"""
